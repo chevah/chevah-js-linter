@@ -14,10 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-try:
-    from setuptools import setup
-except ImportError:
-    from distutils.core import setup
+from setuptools import setup
 
 setup(name='closure_linter',
       version='2.3.19',
@@ -26,7 +23,7 @@ setup(name='closure_linter',
       author='The Closure Linter Authors',
       author_email='opensource@google.com',
       url='https://github.com/google/closure-linter',
-      install_requires=['python-gflags'],
+      install_requires=['python-gflags', 'six'],
       package_dir={'closure_linter': 'closure_linter'},
       packages=['closure_linter', 'closure_linter.common'],
       entry_points = {
@@ -34,5 +31,6 @@ setup(name='closure_linter',
           'gjslint = closure_linter.gjslint:main',
           'fixjsstyle = closure_linter.fixjsstyle:main'
         ]
-      }
+      },
+      test_suite='closure_linter.full_test.GJsLintTestSuite',
 )

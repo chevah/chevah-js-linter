@@ -1,12 +1,10 @@
+# Chevah JS Linter - a fork of Closure Linter
 # Closure Linter - a style checker for ES5 JavaScript
 
-Please note that the **closure linter is deprecated**. Esp. if you use ES6
-features, the tool will not work for you.
+Since **closure linter is deprecated** I have forked it in an attempt to delay
+the migration to Java based tool and be able to continue to use Python.
 
-*   For formatting related issues, please use `clang-format`.
-*   For other checks, you can use the closure compiler along with the
-    `--jscomp_warnings=lintChecks` flag. See also
-    https://developers.google.com/closure/utilities/
+It has the same command names as Closure Linter.
 
 ## Installation
 
@@ -16,3 +14,9 @@ After installing, you get two helper applications installed into `/usr/local/bin
 
 * `gjslint.py` - runs the linter and checks for errors
 * `fixjsstyle.py` - tries to fix errors automatically
+
+
+## Testing
+
+Using setuptools: `python setup.py test`
+Using virtualenv: `python closure_linter/full_test.py`

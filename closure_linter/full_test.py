@@ -104,7 +104,14 @@ class GJsLintTestSuite(unittest.TestSuite):
   def __init__(self, tests=()):
     unittest.TestSuite.__init__(self, tests)
 
-    argv = sys.argv and sys.argv[1:] or []
+
+    if sys.argv[0] == 'setup.py':
+      argv = sys.argv[2:]
+    else:
+      argv = sys.argv[1:]
+
+    flags.FLAGS(['test'] + argv)
+
     if argv:
       test_files = argv
     else:
