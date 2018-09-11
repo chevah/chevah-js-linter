@@ -1,6 +1,8 @@
 # Chevah JS Linter - a fork of Closure Linter
 # Closure Linter - a style checker for ES5 JavaScript
 
+[![Build Status](https://travis-ci.org/chevah/chevah-js-linter.svg?branch=master)](https://travis-ci.org/chevah/chevah-js-linter)
+
 Since **closure linter is deprecated** I have forked it in an attempt to delay
 the migration to Java based tool and be able to continue to use Python.
 
