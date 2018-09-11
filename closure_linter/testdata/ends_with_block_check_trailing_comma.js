@@ -12,35 +12,34 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-
-// Newer JS standard allow trailing commas
-var good = {
+var bad = {
   'a': 1,
-  'b': 2,
+  'b': 2,  // COMMA_AT_END_OF_LITERAL
 };
 
-var good_array = [
-  1,
-  2,
-  3,
-];
-
-var good_value = function_call(one_argument,
-    other_argument,
-    );
-
-var also_good = {
+var good = {
   'a': 1,
   'b': 2
 };
 
-var also_good_array = [
+var bad_value = function_call(
+    one_argument,
+    other_argument,  // COMMA_AT_END_OF_LITERAL
+    );
+
+var good_value = function_call(
+    one_argument,
+    other_argument
+    );
+
+var good_array = [
   1,
   2,
   3
 ];
 
-var also_good_value = function_call(
-    one_argument,
-    other_argument
-    );
+var bad_array = [
+  1,
+  2,
+  3,  // COMMA_AT_END_OF_LITERAL
+];

@@ -25,11 +25,8 @@ from closure_linter import error_fixer
 from closure_linter import runner
 
 
-_RESOURCE_PREFIX = 'closure_linter/testdata'
-
-flags.FLAGS.strict = True
-flags.FLAGS.limited_doc_files = ('dummy.js', 'externs.js')
-flags.FLAGS.closurized_namespaces = ('goog', 'dummy')
+_RESOURCE_PREFIX = 'closure_linter/fixjsstyle_testdata'
+flags.FLAGS([])
 
 
 class FixJsStyleTest(googletest.TestCase):
@@ -38,6 +35,9 @@ class FixJsStyleTest(googletest.TestCase):
   def setUp(self):
     flags.FLAGS.dot_on_next_line = True
     flags.FLAGS.check_trailing_comma = False
+    flags.FLAGS.strict = True
+    flags.FLAGS.limited_doc_files = ('dummy.js', 'externs.js')
+    flags.FLAGS.closurized_namespaces = ('goog', 'dummy')
 
   def tearDown(self):
     flags.FLAGS.dot_on_next_line = False

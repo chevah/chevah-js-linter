@@ -18,6 +18,8 @@
 Runs the given checker on the given file, accumulating all errors.  The list
 of errors is then matched against those annotated in the file.  Based heavily
 on devtools/javascript/gpylint/full_test.py.
+
+If a file name end with FLAG_NAME, the flag name is set to True.
 """
 
 __author__ = ('robbyw@google.com (Robert Walker)',
@@ -59,8 +61,17 @@ class AnnotatedFileTestCase(googletest.TestCase):
 
   def setUp(self):
     flags.FLAGS.dot_on_next_line = True
-    flags.FLAGS.check_trailing_comma = False
-    flags.FLAGS.strict = True
+
+    if 'check_trailing_comma' in self._filename:
+      flags.FLAGS.check_trailing_comma = True
+    else:
+      flags.FLAGS.check_trailing_comma = False
+
+    if 'not_strict' in self._filename:
+      flags.FLAGS.strict = False
+    else:
+      flags.FLAGS.strict = True
+
     flags.FLAGS.custom_jsdoc_tags = ('customtag', 'requires')
     flags.FLAGS.closurized_namespaces = ('goog', 'dummy')
     flags.FLAGS.limited_doc_files = ('externs.js', 'dummy.js',

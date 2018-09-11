@@ -460,10 +460,9 @@ class EcmaScriptLintRules(checkerbase.LintRulesBase):
       # Ensure there is no space before closing parentheses, except when
       # it's in a for statement with an omitted section, or when it's at the
       # beginning of a line.
-
       last_code = token.metadata.last_code
-      if FLAGS.check_trailing_comma and token_type == Type.END_BRACKET:
-        if last_code.IsOperator(','):
+      if FLAGS.check_trailing_comma and last_code.IsOperator(','):
+        if token_type in [Type.END_BRACKET, Type.END_PAREN]:
           self._HandleError(
               errors.COMMA_AT_END_OF_LITERAL,
               'Illegal comma at end of array literal', last_code,

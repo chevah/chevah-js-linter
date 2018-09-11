@@ -19,7 +19,6 @@
 Tests every error that can be thrown by gjslint.  Based heavily on
 devtools/javascript/gpylint/full_test.py
 """
-
 __author__ = ('robbyw@google.com (Robert Walker)',
               'ajp@google.com (Andy Perelson)')
 
@@ -35,55 +34,6 @@ from closure_linter import runner
 from closure_linter.common import filetestcase
 
 _RESOURCE_PREFIX = 'closure_linter/testdata'
-
-# List of files under testdata to test.
-# We need to list files explicitly since pyglib can't list directories.
-# TODO(user): Figure out how to list the directory.
-_TEST_FILES = [
-    'all_js_wrapped.js',
-    'blank_lines.js',
-    'ends_with_block.js',
-    'empty_file.js',
-    'externs.js',
-    'externs_jsdoc.js',
-    'goog_scope.js',
-    'html_parse_error.html',
-    'indentation.js',
-    'interface.js',
-    'jsdoc.js',
-    'limited_doc_checks.js',
-    'minimal.js',
-    'other.js',
-    'provide_blank.js',
-    'provide_extra.js',
-    'provide_missing.js',
-    'require_alias.js',
-    'require_all_caps.js',
-    'require_blank.js',
-    'require_extra.js',
-    'require_function.js',
-    'require_function_missing.js',
-    'require_function_through_both.js',
-    'require_function_through_namespace.js',
-    'require_interface.js',
-    'require_interface_alias.js',
-    'require_interface_base.js',
-    'require_lower_case.js',
-    'require_missing.js',
-    'require_numeric.js',
-    'require_provide_blank.js',
-    'require_provide_missing.js',
-    'require_provide_ok.js',
-    'semicolon_missing.js',
-    'semicolon_missing2.js',
-    'simple.html',
-    'spaces.js',
-    'tokenizer.js',
-    'unparseable.js',
-    'unused_local_variables.js',
-    'unused_private_members.js',
-    'utf8.html',
-]
 
 
 class GJsLintTestSuite(unittest.TestSuite):
@@ -109,7 +59,17 @@ class GJsLintTestSuite(unittest.TestSuite):
     if argv:
       test_files = argv
     else:
-      test_files = _TEST_FILES
+      test_files = os.listdir(os.path.join(
+        os.path.dirname(runner.__file__),
+        'testdata',
+        ))
+      excepted = [
+        'bugs.js',  # Not implemented - known bugs.
+        'not_strict.js',  # Don't know what to expect for non-strict.
+        'file_level_comment.js',  # Not implemented.
+        ]
+      test_files = [t for t in test_files if t not in excepted]
+
     for test_file in test_files:
       resource_path = os.path.join(_RESOURCE_PREFIX, test_file)
       self.addTest(
@@ -117,6 +77,7 @@ class GJsLintTestSuite(unittest.TestSuite):
               resource_path,
               runner.Run,
               errors.ByName))
+
 
 if __name__ == '__main__':
   # Don't let main parse args; it happens in the TestSuite.

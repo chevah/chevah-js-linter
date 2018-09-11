@@ -2,10 +2,10 @@
  * @fileoverview This file has errors that could trigger both in strict and non
  * strict mode. The errors beginning with _ should not be triggered when strict
  * flag is false.
- * // -1: _INVALID_AUTHOR_TAG_DESCRIPTION
+ * // -1: INVALID_AUTHOR_TAG_DESCRIPTION
  */
 
-/** // _WRONG_BLANK_LINE_COUNT
+/** // WRONG_BLANK_LINE_COUNT
  * A constructor with 1 line above it (BAD).
  * // +1: MISSING_JSDOC_TAG_TYPE
  * @param a A parameter.

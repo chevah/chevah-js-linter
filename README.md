@@ -18,6 +18,13 @@ After installing, you get two helper applications installed into `/usr/local/bin
 
 ## Testing
 
-* Using setuptools `python setup.py test`
-* Using virtualenv (see setup.py for dependecies)
-  `python closure_linter/full_test.py`
+Using setuptools `python setup.py test`
+
+Using virtualenv (see setup.py for dependecies)
+`python closure_linter/full_test.py`
+
+You can also run a single test (might need to udpate the test to initialize
+the flags) `python closure_linter/fixjsstyle_test.py`
+
+Or run a single functional tests
+`python closure_linter/full_test.py ends_with_block.js`
