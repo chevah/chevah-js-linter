@@ -26,9 +26,13 @@ from closure_linter import errors
 from closure_linter import runner
 from closure_linter.common import erroraccumulator
 
-flags.FLAGS.check_trailing_comma = True
+flags.FLAGS([])
+
 class TrailingCommaTest(googletest.TestCase):
   """Test case to for gjslint errorrules."""
+
+  def setUp(self):
+    flags.FLAGS.check_trailing_comma = True
 
   def testGetTrailingCommaArray(self):
     """ warning for trailing commas before closing array
