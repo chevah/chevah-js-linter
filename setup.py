@@ -17,13 +17,13 @@
 from setuptools import setup
 
 
-setup(name='closure_linter',
+setup(name='chevah-js-linter',
       version='2.4.0',
-      description='Closure Linter',
+      description='Chevah JS Linter',
       license='Apache',
       author='The Closure Linter Authors',
-      author_email='opensource@google.com',
-      url='https://github.com/google/closure-linter',
+      author_email='adiroiban@gmail.com',
+      url='https://github.com/chevah/chevah-js-linter',
       install_requires=['python-gflags', 'six'],
       tests_require=['mox'],
       package_dir={'closure_linter': 'closure_linter'},
