@@ -39,7 +39,6 @@ import errno
 import itertools
 import os
 import platform
-import re
 import sys
 import time
 

@@ -16,14 +16,16 @@
 
 from setuptools import setup
 
+
 setup(name='closure_linter',
-      version='2.3.19',
+      version='2.3.20',
       description='Closure Linter',
       license='Apache',
       author='The Closure Linter Authors',
       author_email='opensource@google.com',
       url='https://github.com/google/closure-linter',
       install_requires=['python-gflags', 'six'],
+      tests_require=['mox'],
       package_dir={'closure_linter': 'closure_linter'},
       packages=['closure_linter', 'closure_linter.common'],
       entry_points = {
@@ -32,5 +34,5 @@ setup(name='closure_linter',
           'fixjsstyle = closure_linter.fixjsstyle:main'
         ]
       },
-      test_suite='closure_linter.full_test.GJsLintTestSuite',
+      test_suite='closure_linter.testutil.run_all',
 )

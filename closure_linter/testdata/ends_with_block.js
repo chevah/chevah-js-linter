@@ -17,3 +17,13 @@
 if (x) {
   alert('Hello world');
 }
+
+var good = {
+  'a': 1,
+  'b', 2
+};
+
+var bad = {
+  'a': 1,
+  'b', 2,
+};

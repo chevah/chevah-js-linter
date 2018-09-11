@@ -28,6 +28,7 @@ import re
 import gflags as flags
 import unittest as googletest
 from closure_linter.common import erroraccumulator
+from closure_linter import error_check
 
 
 class AnnotatedFileTestCase(googletest.TestCase):
@@ -58,9 +59,17 @@ class AnnotatedFileTestCase(googletest.TestCase):
 
   def setUp(self):
     flags.FLAGS.dot_on_next_line = True
+    flags.FLAGS.check_trailing_comma = False
+    flags.FLAGS.strict = True
+    flags.FLAGS.custom_jsdoc_tags = ('customtag', 'requires')
+    flags.FLAGS.closurized_namespaces = ('goog', 'dummy')
+    flags.FLAGS.limited_doc_files = ('externs.js', 'dummy.js',
+                                     'limited_doc_checks.js')
+    flags.FLAGS.jslint_error = error_check.Rule.ALL
 
   def tearDown(self):
     flags.FLAGS.dot_on_next_line = False
+    flags.FLAGS.check_trailing_comma = True
 
   def shortDescription(self):
     """Provides a description for the test."""

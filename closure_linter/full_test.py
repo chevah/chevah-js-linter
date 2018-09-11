@@ -30,19 +30,11 @@ import unittest
 import gflags as flags
 import unittest as googletest
 
-from closure_linter import error_check
 from closure_linter import errors
 from closure_linter import runner
 from closure_linter.common import filetestcase
 
 _RESOURCE_PREFIX = 'closure_linter/testdata'
-
-flags.FLAGS.strict = True
-flags.FLAGS.custom_jsdoc_tags = ('customtag', 'requires')
-flags.FLAGS.closurized_namespaces = ('goog', 'dummy')
-flags.FLAGS.limited_doc_files = ('externs.js', 'dummy.js',
-                                 'limited_doc_checks.js')
-flags.FLAGS.jslint_error = error_check.Rule.ALL
 
 # List of files under testdata to test.
 # We need to list files explicitly since pyglib can't list directories.
@@ -99,6 +91,8 @@ class GJsLintTestSuite(unittest.TestSuite):
 
   If sys.argv[1:] is non-empty, it is interpreted as a list of filenames in
   testdata to test. Otherwise, _TEST_FILES is used.
+
+  The tests are executed with flags from filetestcase.AnnotatedFileTestCase
   """
 
   def __init__(self, tests=()):

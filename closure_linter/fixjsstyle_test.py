@@ -37,6 +37,7 @@ class FixJsStyleTest(googletest.TestCase):
 
   def setUp(self):
     flags.FLAGS.dot_on_next_line = True
+    flags.FLAGS.check_trailing_comma = False
 
   def tearDown(self):
     flags.FLAGS.dot_on_next_line = False

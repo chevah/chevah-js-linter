@@ -35,10 +35,6 @@ flags.FLAGS.closurized_namespaces = ('goog', 'dummy')
 class ErrorRulesTest(googletest.TestCase):
   """Test case to for gjslint errorrules."""
 
-  def testNoMaxLineLengthFlagExists(self):
-    """Tests that --max_line_length flag does not exists."""
-    self.assertTrue('max_line_length' not in flags.FLAGS.FlagDict())
-
   def testGetMaxLineLength(self):
     """Tests warning are reported for line greater than 80.
     """
@@ -61,10 +57,6 @@ class ErrorRulesTest(googletest.TestCase):
     expected = [errors.LINE_TOO_LONG, errors.LINE_TOO_LONG]
 
     self._AssertErrors(original, expected)
-
-  def testNoDisableFlagExists(self):
-    """Tests that --disable flag does not exists."""
-    self.assertTrue('disable' not in flags.FLAGS.FlagDict())
 
   def testWarningsNotDisabled(self):
     """Tests warnings are reported when nothing is disabled.

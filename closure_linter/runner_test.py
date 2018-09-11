@@ -78,6 +78,7 @@ class RunnerTest(googletest.TestCase):
     mock_error_handler.HandleFile('foo.js', mox.IsA(tokens.Token))
     mock_error_handler.HandleError(mox.Func(ValidateError))
     mock_error_handler.HandleError(mox.IsA(error.Error))
+    mock_error_handler.HandleError(mox.IsA(error.Error))
     mock_error_handler.FinishFile()
 
     self.mox.ReplayAll()

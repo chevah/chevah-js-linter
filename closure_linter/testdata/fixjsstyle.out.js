@@ -18,8 +18,6 @@
  * @author robbyw@google.com (Robby Walker)
  * @author robbyw@google.com (Robby Walker)
  * @author robbyw@google.com (Robby Walker)
- * @author robbyw@google.com (Robby Walker)
- * @author robbyw@google.com (Robby)
  * @author robbyw@google.com
  * @author robbyw@google.com Robby
  */

@@ -13,10 +13,11 @@ To install the application, run `python ./setup.py install`
 After installing, you get two helper applications installed into `/usr/local/bin`:
 
 * `gjslint.py` - runs the linter and checks for errors
-* `fixjsstyle.py` - tries to fix errors automatically
+* `fixjsstyle.py` - DEPRECATED and not updated
 
 
 ## Testing
 
-Using setuptools: `python setup.py test`
-Using virtualenv: `python closure_linter/full_test.py`
+* Using setuptools `python setup.py test`
+* Using virtualenv (see setup.py for dependecies)
+  `python closure_linter/full_test.py`

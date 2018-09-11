@@ -22,6 +22,7 @@
 __author__ = ('nnaze@google.com (Nathan Naze)')
 
 import StringIO
+import unittest
 
 from closure_linter import ecmametadatapass
 from closure_linter import javascriptstatetracker
@@ -92,3 +93,22 @@ def ParseFunctionsAndComments(source, error_handler=None):
     tracker.HandleAfterToken(token)
 
   return functions, comments
+
+
+def run_all():
+    from closure_linter.full_test import GJsLintTestSuite
+
+    test_loader = unittest.TestLoader()
+    test_suite = GJsLintTestSuite()
+
+
+    unit_tests = test_loader.discover('closure_linter', pattern='*_test.py')
+
+    for test in unit_tests:
+      test_suite.addTest(test)
+
+    return test_suite
+
+
+if __name__ == '__main__':
+  unittest.TextTestRunner().run(run_all())
