@@ -1,0 +1,8 @@
+language: python
+python:
+  - "2.7"
+install:
+  - pip install pyflakes
+script:
+  - python setup.py test
+  - pyflakes closure_linter
